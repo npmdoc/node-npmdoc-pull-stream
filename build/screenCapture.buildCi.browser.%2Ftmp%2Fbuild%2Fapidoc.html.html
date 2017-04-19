@@ -1,0 +1,2157 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://pull-stream.github.io">pull-stream (v3.5.0)</a>
+</h1>
+<h4>minimal pull stream</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pull-stream">module pull-stream</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull-stream">
+            function <span class="apidocSignatureSpan"></span>pull-stream
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.asyncMap">
+            function <span class="apidocSignatureSpan">pull-stream.</span>asyncMap
+            <span class="apidocSignatureSpan">(map)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.collect">
+            function <span class="apidocSignatureSpan">pull-stream.</span>collect
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.concat">
+            function <span class="apidocSignatureSpan">pull-stream.</span>concat
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.count">
+            function <span class="apidocSignatureSpan">pull-stream.</span>count
+            <span class="apidocSignatureSpan">(max)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.drain">
+            function <span class="apidocSignatureSpan">pull-stream.</span>drain
+            <span class="apidocSignatureSpan">(op, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.empty">
+            function <span class="apidocSignatureSpan">pull-stream.</span>empty
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.error">
+            function <span class="apidocSignatureSpan">pull-stream.</span>error
+            <span class="apidocSignatureSpan">(err)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.filter">
+            function <span class="apidocSignatureSpan">pull-stream.</span>filter
+            <span class="apidocSignatureSpan">(test)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.filterNot">
+            function <span class="apidocSignatureSpan">pull-stream.</span>filterNot
+            <span class="apidocSignatureSpan">(test)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.find">
+            function <span class="apidocSignatureSpan">pull-stream.</span>find
+            <span class="apidocSignatureSpan">(test, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.flatten">
+            function <span class="apidocSignatureSpan">pull-stream.</span>flatten
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.infinite">
+            function <span class="apidocSignatureSpan">pull-stream.</span>infinite
+            <span class="apidocSignatureSpan">(generate)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.keys">
+            function <span class="apidocSignatureSpan">pull-stream.</span>keys
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.log">
+            function <span class="apidocSignatureSpan">pull-stream.</span>log
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.map">
+            function <span class="apidocSignatureSpan">pull-stream.</span>map
+            <span class="apidocSignatureSpan">(mapper)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.nonUnique">
+            function <span class="apidocSignatureSpan">pull-stream.</span>nonUnique
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.onEnd">
+            function <span class="apidocSignatureSpan">pull-stream.</span>onEnd
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.once">
+            function <span class="apidocSignatureSpan">pull-stream.</span>once
+            <span class="apidocSignatureSpan">(value, onAbort)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull">
+            function <span class="apidocSignatureSpan">pull-stream.</span>pull
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.reduce">
+            function <span class="apidocSignatureSpan">pull-stream.</span>reduce
+            <span class="apidocSignatureSpan">(reducer, acc, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.take">
+            function <span class="apidocSignatureSpan">pull-stream.</span>take
+            <span class="apidocSignatureSpan">(test, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.through">
+            function <span class="apidocSignatureSpan">pull-stream.</span>through
+            <span class="apidocSignatureSpan">(op, onEnd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.unique">
+            function <span class="apidocSignatureSpan">pull-stream.</span>unique
+            <span class="apidocSignatureSpan">(field, invert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.values">
+            function <span class="apidocSignatureSpan">pull-stream.</span>values
+            <span class="apidocSignatureSpan">(array, onAbort)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pull-stream.pull">module pull-stream.pull</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.pull">
+            function <span class="apidocSignatureSpan">pull-stream.</span>pull
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.asyncMap">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>asyncMap
+            <span class="apidocSignatureSpan">(map)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.collect">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>collect
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.concat">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>concat
+            <span class="apidocSignatureSpan">(cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.count">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>count
+            <span class="apidocSignatureSpan">(max)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.drain">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>drain
+            <span class="apidocSignatureSpan">(op, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.empty">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>empty
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.error">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>error
+            <span class="apidocSignatureSpan">(err)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.filter">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>filter
+            <span class="apidocSignatureSpan">(test)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.filterNot">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>filterNot
+            <span class="apidocSignatureSpan">(test)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.find">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>find
+            <span class="apidocSignatureSpan">(test, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.flatten">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>flatten
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.infinite">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>infinite
+            <span class="apidocSignatureSpan">(generate)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.keys">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>keys
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.log">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>log
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.map">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>map
+            <span class="apidocSignatureSpan">(mapper)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.nonUnique">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>nonUnique
+            <span class="apidocSignatureSpan">(field)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.onEnd">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>onEnd
+            <span class="apidocSignatureSpan">(done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.once">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>once
+            <span class="apidocSignatureSpan">(value, onAbort)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.reduce">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>reduce
+            <span class="apidocSignatureSpan">(reducer, acc, cb )</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.take">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>take
+            <span class="apidocSignatureSpan">(test, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.through">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>through
+            <span class="apidocSignatureSpan">(op, onEnd)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.unique">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>unique
+            <span class="apidocSignatureSpan">(field, invert)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pull-stream.pull.values">
+            function <span class="apidocSignatureSpan">pull-stream.pull.</span>values
+            <span class="apidocSignatureSpan">(array, onAbort)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pull-stream" id="apidoc.module.pull-stream">module pull-stream</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull-stream" id="apidoc.element.pull-stream.pull-stream">
+        function <span class="apidocSignatureSpan"></span>pull-stream
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function pull(a) {
+  var length = arguments.length
+  if (typeof a === 'function' &amp;&amp; a.length === 1) {
+    var args = new Array(length)
+    for(var i = 0; i &lt; length; i++)
+      args[i] = arguments[i]
+    return function (read) {
+      if (args == null) {
+        throw new TypeError("partial sink should only be called once!")
+      }
+
+      // Grab the reference after the check, because it's always an array now
+      // (engines like that kind of consistency).
+      var ref = args
+      args = null
+
+      // Prioritize common case of small number of pulls.
+      switch (length) {
+      case 1: return pull(read, ref[0])
+      case 2: return pull(read, ref[0], ref[1])
+      case 3: return pull(read, ref[0], ref[1], ref[2])
+      case 4: return pull(read, ref[0], ref[1], ref[2], ref[3])
+      default:
+        ref.unshift(read)
+        return pull.apply(null, ref)
+      }
+    }
+  }
+
+  var read = a
+
+  if (read &amp;&amp; typeof read.source === 'function') {
+    read = read.source
+  }
+
+  for (var i = 1; i &lt; length; i++) {
+    var s = arguments[i]
+    if (typeof s === 'function') {
+      read = s(read)
+    } else if (s &amp;&amp; typeof s === 'object') {
+      s.sink(read)
+      read = s.source
+    }
+  }
+
+  return read
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.asyncMap" id="apidoc.element.pull-stream.asyncMap">
+        function <span class="apidocSignatureSpan">pull-stream.</span>asyncMap
+        <span class="apidocSignatureSpan">(map)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asyncMap(map) {
+  if(!map) return id
+  map = prop(map)
+  var busy = false, abortCb, aborted
+  return function (read) {
+    return function next (abort, cb) {
+      if(aborted) return cb(aborted)
+      if(abort) {
+        aborted = abort
+        if(!busy) read(abort, cb)
+        else read(abort, function () {
+          //if we are still busy, wait for the mapper to complete.
+          if(busy) abortCb = cb
+          else cb(abort)
+        })
+      }
+      else
+        read(null, function (end, data) {
+          if(end) cb(end)
+          else if(aborted) cb(aborted)
+          else {
+            busy = true
+            map(data, function (err, data) {
+              busy = false
+              if(aborted) {
+                cb(aborted)
+                abortCb(aborted)
+              }
+              else if(err) next (err, cb)
+              else cb(null, data)
+            })
+          }
+        })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Quick Example
+
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.<span class="apidocCodeKeywordSpan">asyncMap</span>(fs.stat),
+  pull.collect(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.collect" id="apidoc.element.pull-stream.collect">
+        function <span class="apidocSignatureSpan">pull-stream.</span>collect
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function collect(cb) {
+  return reduce(function (arr, item) {
+    arr.push(item)
+    return arr
+  }, [], cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.<span class="apidocCodeKeywordSpan">collect</span>(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+
+to grok how pull-streams work, read through [pull-streams by example](https://github.com/dominictarr/pull-stream-examples)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.concat" id="apidoc.element.pull-stream.concat">
+        function <span class="apidocSignatureSpan">pull-stream.</span>concat
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function concat(cb) {
+  return reduce(function (a, b) {
+    return a + b
+  }, '', cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.count" id="apidoc.element.pull-stream.count">
+        function <span class="apidocSignatureSpan">pull-stream.</span>count
+        <span class="apidocSignatureSpan">(max)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function count(max) {
+  var i = 0; max = max || Infinity
+  return function (end, cb) {
+    if(end) return cb &amp;&amp; cb(end)
+    if(i &gt; max)
+      return cb(true)
+    cb(null, i++)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.drain" id="apidoc.element.pull-stream.drain">
+        function <span class="apidocSignatureSpan">pull-stream.</span>drain
+        <span class="apidocSignatureSpan">(op, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function drain(op, done) {
+  var read, abort
+
+  function sink (_read) {
+    read = _read
+    if(abort) return sink.abort()
+    //this function is much simpler to write if you
+    //just use recursion, but by using a while loop
+    //we do not blow the stack if the stream happens to be sync.
+    ;(function next() {
+        var loop = true, cbed = false
+        while(loop) {
+          cbed = false
+          read(null, function (end, data) {
+            cbed = true
+            if(end = end || abort) {
+              loop = false
+              if(done) done(end === true ? null : end)
+              else if(end &amp;&amp; end !== true)
+                throw end
+            }
+            else if(op &amp;&amp; false === op(data) || abort) {
+              loop = false
+              read(abort || true, done || function () {})
+            }
+            else if(!loop){
+              next()
+            }
+          })
+          if(!cbed) {
+            loop = false
+            return
+          }
+        }
+      })()
+  }
+
+  sink.abort = function (err, cb) {
+    if('function' == typeof err)
+      cb = err, err = true
+    abort = err || true
+    if(read) return read(abort, cb || function () {})
+  }
+
+  return sink
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.empty" id="apidoc.element.pull-stream.empty">
+        function <span class="apidocSignatureSpan">pull-stream.</span>empty
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function empty() {
+  return function (abort, cb) {
+    cb(true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.error" id="apidoc.element.pull-stream.error">
+        function <span class="apidocSignatureSpan">pull-stream.</span>error
+        <span class="apidocSignatureSpan">(err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function error(err) {
+  return function (abort, cb) {
+    cb(err)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  const source = pull.values(values)
+  const through = pull.asyncMap(function (val, done) {
+    const json = JSON.parse(val)
+    done(null, json)
+  })
+
+  const sink = pull.collect(function (err, array) {
+    if (err) return console.<span class="apidocCodeKeywordSpan">error</span>(err)
+    setImmediate(done)
+  })
+  pull(source, through, sink)
+},
+function pull_compose (done) {
+  const source = pull.values(values)
+  const through = pull.asyncMap(function (val, done) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.filter" id="apidoc.element.pull-stream.filter">
+        function <span class="apidocSignatureSpan">pull-stream.</span>filter
+        <span class="apidocSignatureSpan">(test)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filter(test) {
+  //regexp
+  test = tester(test)
+  return function (read) {
+    return function next (end, cb) {
+      var sync, loop = true
+      while(loop) {
+        loop = false
+        sync = true
+        read(end, function (end, data) {
+          if(!end &amp;&amp; !test(data))
+            return sync ? loop = true : next(end, cb)
+          cb(end, data)
+        })
+        sync = false
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.filterNot" id="apidoc.element.pull-stream.filterNot">
+        function <span class="apidocSignatureSpan">pull-stream.</span>filterNot
+        <span class="apidocSignatureSpan">(test)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filterNot(test) {
+  test = tester(test)
+  return filter(function (data) { return !test(data) })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.find" id="apidoc.element.pull-stream.find">
+        function <span class="apidocSignatureSpan">pull-stream.</span>find
+        <span class="apidocSignatureSpan">(test, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function find(test, cb) {
+  var ended = false
+  if(!cb)
+    cb = test, test = id
+  else
+    test = prop(test) || id
+
+  return drain(function (data) {
+    if(test(data)) {
+      ended = true
+      cb(null, data)
+    return false
+    }
+  }, function (err) {
+    if(ended) return //already called back
+    cb(err === true ? null : err, null)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.flatten" id="apidoc.element.pull-stream.flatten">
+        function <span class="apidocSignatureSpan">pull-stream.</span>flatten
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function flatten() {
+  return function (read) {
+    var _read
+    return function (abort, cb) {
+      if (abort) { //abort the current stream, and then stream of streams.
+        _read ? _read(abort, function(err) {
+          read(err || abort, cb)
+        }) : read(abort, cb)
+      }
+      else if(_read) nextChunk()
+      else nextStream()
+
+      function nextChunk () {
+        _read(null, function (err, data) {
+          if (err === true) nextStream()
+          else if (err) {
+            read(true, function(abortErr) {
+              // TODO: what do we do with the abortErr?
+              cb(err)
+            })
+          }
+          else cb(null, data)
+        })
+      }
+      function nextStream () {
+        _read = null
+        read(null, function (end, stream) {
+          if(end)
+            return cb(end)
+          if(Array.isArray(stream) || stream &amp;&amp; 'object' === typeof stream)
+            stream = values(stream)
+          else if('function' != typeof stream)
+            stream = once(stream)
+          _read = stream
+          nextChunk()
+        })
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.infinite" id="apidoc.element.pull-stream.infinite">
+        function <span class="apidocSignatureSpan">pull-stream.</span>infinite
+        <span class="apidocSignatureSpan">(generate)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function infinite(generate) {
+  generate = generate || Math.random
+  return function (end, cb) {
+    if(end) return cb &amp;&amp; cb(end)
+    return cb(null, generate())
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.keys" id="apidoc.element.pull-stream.keys">
+        function <span class="apidocSignatureSpan">pull-stream.</span>keys
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">keys = function (object) {
+  return values(Object.keys(object))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+
+
+'use strict'
+var values = require('./values')
+module.exports = function (object) {
+  return values(Object.<span class="apidocCodeKeywordSpan">keys</span>(object))
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.log" id="apidoc.element.pull-stream.log">
+        function <span class="apidocSignatureSpan">pull-stream.</span>log
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function log(done) {
+  return drain(function (data) {
+    console.log(data)
+  }, done)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.collect(function (err, array) {
+    console.<span class="apidocCodeKeywordSpan">log</span>(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+
+to grok how pull-streams work, read through [pull-streams by example](https://github.com/dominictarr/pull-stream-examples)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.map" id="apidoc.element.pull-stream.map">
+        function <span class="apidocSignatureSpan">pull-stream.</span>map
+        <span class="apidocSignatureSpan">(mapper)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function map(mapper) {
+  if(!mapper) return id
+  mapper = prop(mapper)
+  return function (read) {
+    return function (abort, cb) {
+      read(abort, function (end, data) {
+        try {
+        data = !end ? mapper(data) : null
+        } catch (err) {
+          return read(err, function () {
+            return cb(err)
+          })
+        }
+        cb(end, data)
+      })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+module.exports = function values (array, onAbort) {
+if(!array)
+  return function (abort, cb) {
+    if(abort) return abortCb(cb, abort, onAbort)
+    return cb(true)
+  }
+if(!Array.isArray(array))
+  array = Object.keys(array).<span class="apidocCodeKeywordSpan">map</span>(function (k) {
+    return array[k]
+  })
+var i = 0
+return function (abort, cb) {
+  if(abort)
+    return abortCb(cb, abort, onAbort)
+  if(i &gt;= array.length)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.nonUnique" id="apidoc.element.pull-stream.nonUnique">
+        function <span class="apidocSignatureSpan">pull-stream.</span>nonUnique
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function nonUnique(field) {
+  return unique(field, true)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.onEnd" id="apidoc.element.pull-stream.onEnd">
+        function <span class="apidocSignatureSpan">pull-stream.</span>onEnd
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onEnd(done) {
+  return drain(null, done)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.once" id="apidoc.element.pull-stream.once">
+        function <span class="apidocSignatureSpan">pull-stream.</span>once
+        <span class="apidocSignatureSpan">(value, onAbort)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function once(value, onAbort) {
+  return function (abort, cb) {
+    if(abort)
+      return abortCb(cb, abort, onAbort)
+    if(value != null) {
+      var _value = value; value = null
+      cb(null, _value)
+    } else
+      cb(true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull" id="apidoc.element.pull-stream.pull">
+        function <span class="apidocSignatureSpan">pull-stream.</span>pull
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function pull(a) {
+  var length = arguments.length
+  if (typeof a === 'function' &amp;&amp; a.length === 1) {
+    var args = new Array(length)
+    for(var i = 0; i &lt; length; i++)
+      args[i] = arguments[i]
+    return function (read) {
+      if (args == null) {
+        throw new TypeError("partial sink should only be called once!")
+      }
+
+      // Grab the reference after the check, because it's always an array now
+      // (engines like that kind of consistency).
+      var ref = args
+      args = null
+
+      // Prioritize common case of small number of pulls.
+      switch (length) {
+      case 1: return pull(read, ref[0])
+      case 2: return pull(read, ref[0], ref[1])
+      case 3: return pull(read, ref[0], ref[1], ref[2])
+      case 4: return pull(read, ref[0], ref[1], ref[2], ref[3])
+      default:
+        ref.unshift(read)
+        return pull.apply(null, ref)
+      }
+    }
+  }
+
+  var read = a
+
+  if (read &amp;&amp; typeof read.source === 'function') {
+    read = read.source
+  }
+
+  for (var i = 1; i &lt; length; i++) {
+    var s = arguments[i]
+    if (typeof s === 'function') {
+      read = s(read)
+    } else if (s &amp;&amp; typeof s === 'object') {
+      s.sink(read)
+      read = s.source
+    }
+  }
+
+  return read
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.reduce" id="apidoc.element.pull-stream.reduce">
+        function <span class="apidocSignatureSpan">pull-stream.</span>reduce
+        <span class="apidocSignatureSpan">(reducer, acc, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reduce(reducer, acc, cb ) {
+  if(!cb) cb = acc, acc = null
+  var sink = drain(function (data) {
+    acc = reducer(acc, data)
+  }, function (err) {
+    cb(err, acc)
+  })
+  if (arguments.length === 2)
+    return function (source) {
+      source(null, function (end, data) {
+        //if ended immediately, and no initial...
+        if(end) return cb(end === true ? null : end)
+        acc = data; sink(source)
+      })
+    }
+  else
+    return sink
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.take" id="apidoc.element.pull-stream.take">
+        function <span class="apidocSignatureSpan">pull-stream.</span>take
+        <span class="apidocSignatureSpan">(test, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function take(test, opts) {
+  opts = opts || {}
+  var last = opts.last || false // whether the first item for which !test(item) should still pass
+  var ended = false
+  if('number' === typeof test) {
+    last = true
+    var n = test; test = function () {
+      return --n
+    }
+  }
+
+  return function (read) {
+
+    function terminate (cb) {
+      read(true, function (err) {
+        last = false; cb(err || true)
+      })
+    }
+
+    return function (end, cb) {
+      if(ended)            last ? terminate(cb) : cb(ended)
+      else if(ended = end) read(ended, cb)
+      else
+        read(null, function (end, data) {
+          if(ended = ended || end) {
+            //last ? terminate(cb) :
+            cb(ended)
+          }
+          else if(!test(data)) {
+            ended = true
+            last ? cb(null, data) : terminate(cb)
+          }
+          else
+            cb(null, data)
+        })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.through" id="apidoc.element.pull-stream.through">
+        function <span class="apidocSignatureSpan">pull-stream.</span>through
+        <span class="apidocSignatureSpan">(op, onEnd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function through(op, onEnd) {
+  var a = false
+
+  function once (abort) {
+    if(a || !onEnd) return
+    a = true
+    onEnd(abort === true ? null : abort)
+  }
+
+  return function (read) {
+    return function (end, cb) {
+      if(end) once(end)
+      return read(end, function (end, data) {
+        if(!end) op &amp;&amp; op(data)
+        else once(end)
+        cb(end, data)
+      })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.unique" id="apidoc.element.pull-stream.unique">
+        function <span class="apidocSignatureSpan">pull-stream.</span>unique
+        <span class="apidocSignatureSpan">(field, invert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unique(field, invert) {
+  field = prop(field) || id
+  var seen = {}
+  return filter(function (data) {
+    var key = field(data)
+    if(seen[key]) return !!invert //false, by default
+    else seen[key] = true
+    return !invert //true by default
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.values" id="apidoc.element.pull-stream.values">
+        function <span class="apidocSignatureSpan">pull-stream.</span>values
+        <span class="apidocSignatureSpan">(array, onAbort)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function values(array, onAbort) {
+  if(!array)
+    return function (abort, cb) {
+      if(abort) return abortCb(cb, abort, onAbort)
+      return cb(true)
+    }
+  if(!Array.isArray(array))
+    array = Object.keys(array).map(function (k) {
+      return array[k]
+    })
+  var i = 0
+  return function (abort, cb) {
+    if(abort)
+      return abortCb(cb, abort, onAbort)
+    if(i &gt;= array.length)
+      cb(true)
+    else
+      cb(null, array[i++])
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Quick Example
+
+Stat some files:
+
+```js
+pull(
+  pull.<span class="apidocCodeKeywordSpan">values</span>(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.collect(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pull-stream.pull" id="apidoc.module.pull-stream.pull">module pull-stream.pull</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.pull" id="apidoc.element.pull-stream.pull.pull">
+        function <span class="apidocSignatureSpan">pull-stream.</span>pull
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function pull(a) {
+  var length = arguments.length
+  if (typeof a === 'function' &amp;&amp; a.length === 1) {
+    var args = new Array(length)
+    for(var i = 0; i &lt; length; i++)
+      args[i] = arguments[i]
+    return function (read) {
+      if (args == null) {
+        throw new TypeError("partial sink should only be called once!")
+      }
+
+      // Grab the reference after the check, because it's always an array now
+      // (engines like that kind of consistency).
+      var ref = args
+      args = null
+
+      // Prioritize common case of small number of pulls.
+      switch (length) {
+      case 1: return pull(read, ref[0])
+      case 2: return pull(read, ref[0], ref[1])
+      case 3: return pull(read, ref[0], ref[1], ref[2])
+      case 4: return pull(read, ref[0], ref[1], ref[2], ref[3])
+      default:
+        ref.unshift(read)
+        return pull.apply(null, ref)
+      }
+    }
+  }
+
+  var read = a
+
+  if (read &amp;&amp; typeof read.source === 'function') {
+    read = read.source
+  }
+
+  for (var i = 1; i &lt; length; i++) {
+    var s = arguments[i]
+    if (typeof s === 'function') {
+      read = s(read)
+    } else if (s &amp;&amp; typeof s === 'object') {
+      s.sink(read)
+      read = s.source
+    }
+  }
+
+  return read
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.asyncMap" id="apidoc.element.pull-stream.pull.asyncMap">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>asyncMap
+        <span class="apidocSignatureSpan">(map)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function asyncMap(map) {
+  if(!map) return id
+  map = prop(map)
+  var busy = false, abortCb, aborted
+  return function (read) {
+    return function next (abort, cb) {
+      if(aborted) return cb(aborted)
+      if(abort) {
+        aborted = abort
+        if(!busy) read(abort, cb)
+        else read(abort, function () {
+          //if we are still busy, wait for the mapper to complete.
+          if(busy) abortCb = cb
+          else cb(abort)
+        })
+      }
+      else
+        read(null, function (end, data) {
+          if(end) cb(end)
+          else if(aborted) cb(aborted)
+          else {
+            busy = true
+            map(data, function (err, data) {
+              busy = false
+              if(aborted) {
+                cb(aborted)
+                abortCb(aborted)
+              }
+              else if(err) next (err, cb)
+              else cb(null, data)
+            })
+          }
+        })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Quick Example
+
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.<span class="apidocCodeKeywordSpan">asyncMap</span>(fs.stat),
+  pull.collect(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.collect" id="apidoc.element.pull-stream.pull.collect">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>collect
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function collect(cb) {
+  return reduce(function (arr, item) {
+    arr.push(item)
+    return arr
+  }, [], cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.<span class="apidocCodeKeywordSpan">collect</span>(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+
+to grok how pull-streams work, read through [pull-streams by example](https://github.com/dominictarr/pull-stream-examples)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.concat" id="apidoc.element.pull-stream.pull.concat">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>concat
+        <span class="apidocSignatureSpan">(cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function concat(cb) {
+  return reduce(function (a, b) {
+    return a + b
+  }, '', cb)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.count" id="apidoc.element.pull-stream.pull.count">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>count
+        <span class="apidocSignatureSpan">(max)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function count(max) {
+  var i = 0; max = max || Infinity
+  return function (end, cb) {
+    if(end) return cb &amp;&amp; cb(end)
+    if(i &gt; max)
+      return cb(true)
+    cb(null, i++)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.drain" id="apidoc.element.pull-stream.pull.drain">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>drain
+        <span class="apidocSignatureSpan">(op, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function drain(op, done) {
+  var read, abort
+
+  function sink (_read) {
+    read = _read
+    if(abort) return sink.abort()
+    //this function is much simpler to write if you
+    //just use recursion, but by using a while loop
+    //we do not blow the stack if the stream happens to be sync.
+    ;(function next() {
+        var loop = true, cbed = false
+        while(loop) {
+          cbed = false
+          read(null, function (end, data) {
+            cbed = true
+            if(end = end || abort) {
+              loop = false
+              if(done) done(end === true ? null : end)
+              else if(end &amp;&amp; end !== true)
+                throw end
+            }
+            else if(op &amp;&amp; false === op(data) || abort) {
+              loop = false
+              read(abort || true, done || function () {})
+            }
+            else if(!loop){
+              next()
+            }
+          })
+          if(!cbed) {
+            loop = false
+            return
+          }
+        }
+      })()
+  }
+
+  sink.abort = function (err, cb) {
+    if('function' == typeof err)
+      cb = err, err = true
+    abort = err || true
+    if(read) return read(abort, cb || function () {})
+  }
+
+  return sink
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.empty" id="apidoc.element.pull-stream.pull.empty">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>empty
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function empty() {
+  return function (abort, cb) {
+    cb(true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.error" id="apidoc.element.pull-stream.pull.error">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>error
+        <span class="apidocSignatureSpan">(err)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function error(err) {
+  return function (abort, cb) {
+    cb(err)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  const source = pull.values(values)
+  const through = pull.asyncMap(function (val, done) {
+    const json = JSON.parse(val)
+    done(null, json)
+  })
+
+  const sink = pull.collect(function (err, array) {
+    if (err) return console.<span class="apidocCodeKeywordSpan">error</span>(err)
+    setImmediate(done)
+  })
+  pull(source, through, sink)
+},
+function pull_compose (done) {
+  const source = pull.values(values)
+  const through = pull.asyncMap(function (val, done) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.filter" id="apidoc.element.pull-stream.pull.filter">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>filter
+        <span class="apidocSignatureSpan">(test)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filter(test) {
+  //regexp
+  test = tester(test)
+  return function (read) {
+    return function next (end, cb) {
+      var sync, loop = true
+      while(loop) {
+        loop = false
+        sync = true
+        read(end, function (end, data) {
+          if(!end &amp;&amp; !test(data))
+            return sync ? loop = true : next(end, cb)
+          cb(end, data)
+        })
+        sync = false
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.filterNot" id="apidoc.element.pull-stream.pull.filterNot">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>filterNot
+        <span class="apidocSignatureSpan">(test)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function filterNot(test) {
+  test = tester(test)
+  return filter(function (data) { return !test(data) })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.find" id="apidoc.element.pull-stream.pull.find">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>find
+        <span class="apidocSignatureSpan">(test, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function find(test, cb) {
+  var ended = false
+  if(!cb)
+    cb = test, test = id
+  else
+    test = prop(test) || id
+
+  return drain(function (data) {
+    if(test(data)) {
+      ended = true
+      cb(null, data)
+    return false
+    }
+  }, function (err) {
+    if(ended) return //already called back
+    cb(err === true ? null : err, null)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.flatten" id="apidoc.element.pull-stream.pull.flatten">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>flatten
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function flatten() {
+  return function (read) {
+    var _read
+    return function (abort, cb) {
+      if (abort) { //abort the current stream, and then stream of streams.
+        _read ? _read(abort, function(err) {
+          read(err || abort, cb)
+        }) : read(abort, cb)
+      }
+      else if(_read) nextChunk()
+      else nextStream()
+
+      function nextChunk () {
+        _read(null, function (err, data) {
+          if (err === true) nextStream()
+          else if (err) {
+            read(true, function(abortErr) {
+              // TODO: what do we do with the abortErr?
+              cb(err)
+            })
+          }
+          else cb(null, data)
+        })
+      }
+      function nextStream () {
+        _read = null
+        read(null, function (end, stream) {
+          if(end)
+            return cb(end)
+          if(Array.isArray(stream) || stream &amp;&amp; 'object' === typeof stream)
+            stream = values(stream)
+          else if('function' != typeof stream)
+            stream = once(stream)
+          _read = stream
+          nextChunk()
+        })
+      }
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.infinite" id="apidoc.element.pull-stream.pull.infinite">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>infinite
+        <span class="apidocSignatureSpan">(generate)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function infinite(generate) {
+  generate = generate || Math.random
+  return function (end, cb) {
+    if(end) return cb &amp;&amp; cb(end)
+    return cb(null, generate())
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.keys" id="apidoc.element.pull-stream.pull.keys">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>keys
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">keys = function (object) {
+  return values(Object.keys(object))
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+
+
+
+'use strict'
+var values = require('./values')
+module.exports = function (object) {
+  return values(Object.<span class="apidocCodeKeywordSpan">keys</span>(object))
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.log" id="apidoc.element.pull-stream.pull.log">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>log
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function log(done) {
+  return drain(function (data) {
+    console.log(data)
+  }, done)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Stat some files:
+
+```js
+pull(
+  pull.values(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.collect(function (err, array) {
+    console.<span class="apidocCodeKeywordSpan">log</span>(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+
+to grok how pull-streams work, read through [pull-streams by example](https://github.com/dominictarr/pull-stream-examples)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.map" id="apidoc.element.pull-stream.pull.map">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>map
+        <span class="apidocSignatureSpan">(mapper)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function map(mapper) {
+  if(!mapper) return id
+  mapper = prop(mapper)
+  return function (read) {
+    return function (abort, cb) {
+      read(abort, function (end, data) {
+        try {
+        data = !end ? mapper(data) : null
+        } catch (err) {
+          return read(err, function () {
+            return cb(err)
+          })
+        }
+        cb(end, data)
+      })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+module.exports = function values (array, onAbort) {
+if(!array)
+  return function (abort, cb) {
+    if(abort) return abortCb(cb, abort, onAbort)
+    return cb(true)
+  }
+if(!Array.isArray(array))
+  array = Object.keys(array).<span class="apidocCodeKeywordSpan">map</span>(function (k) {
+    return array[k]
+  })
+var i = 0
+return function (abort, cb) {
+  if(abort)
+    return abortCb(cb, abort, onAbort)
+  if(i &gt;= array.length)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.nonUnique" id="apidoc.element.pull-stream.pull.nonUnique">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>nonUnique
+        <span class="apidocSignatureSpan">(field)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function nonUnique(field) {
+  return unique(field, true)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.onEnd" id="apidoc.element.pull-stream.pull.onEnd">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>onEnd
+        <span class="apidocSignatureSpan">(done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function onEnd(done) {
+  return drain(null, done)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.once" id="apidoc.element.pull-stream.pull.once">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>once
+        <span class="apidocSignatureSpan">(value, onAbort)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function once(value, onAbort) {
+  return function (abort, cb) {
+    if(abort)
+      return abortCb(cb, abort, onAbort)
+    if(value != null) {
+      var _value = value; value = null
+      cb(null, _value)
+    } else
+      cb(true)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.reduce" id="apidoc.element.pull-stream.pull.reduce">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>reduce
+        <span class="apidocSignatureSpan">(reducer, acc, cb )</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function reduce(reducer, acc, cb ) {
+  if(!cb) cb = acc, acc = null
+  var sink = drain(function (data) {
+    acc = reducer(acc, data)
+  }, function (err) {
+    cb(err, acc)
+  })
+  if (arguments.length === 2)
+    return function (source) {
+      source(null, function (end, data) {
+        //if ended immediately, and no initial...
+        if(end) return cb(end === true ? null : end)
+        acc = data; sink(source)
+      })
+    }
+  else
+    return sink
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.take" id="apidoc.element.pull-stream.pull.take">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>take
+        <span class="apidocSignatureSpan">(test, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function take(test, opts) {
+  opts = opts || {}
+  var last = opts.last || false // whether the first item for which !test(item) should still pass
+  var ended = false
+  if('number' === typeof test) {
+    last = true
+    var n = test; test = function () {
+      return --n
+    }
+  }
+
+  return function (read) {
+
+    function terminate (cb) {
+      read(true, function (err) {
+        last = false; cb(err || true)
+      })
+    }
+
+    return function (end, cb) {
+      if(ended)            last ? terminate(cb) : cb(ended)
+      else if(ended = end) read(ended, cb)
+      else
+        read(null, function (end, data) {
+          if(ended = ended || end) {
+            //last ? terminate(cb) :
+            cb(ended)
+          }
+          else if(!test(data)) {
+            ended = true
+            last ? cb(null, data) : terminate(cb)
+          }
+          else
+            cb(null, data)
+        })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.through" id="apidoc.element.pull-stream.pull.through">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>through
+        <span class="apidocSignatureSpan">(op, onEnd)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function through(op, onEnd) {
+  var a = false
+
+  function once (abort) {
+    if(a || !onEnd) return
+    a = true
+    onEnd(abort === true ? null : abort)
+  }
+
+  return function (read) {
+    return function (end, cb) {
+      if(end) once(end)
+      return read(end, function (end, data) {
+        if(!end) op &amp;&amp; op(data)
+        else once(end)
+        cb(end, data)
+      })
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.unique" id="apidoc.element.pull-stream.pull.unique">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>unique
+        <span class="apidocSignatureSpan">(field, invert)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function unique(field, invert) {
+  field = prop(field) || id
+  var seen = {}
+  return filter(function (data) {
+    var key = field(data)
+    if(seen[key]) return !!invert //false, by default
+    else seen[key] = true
+    return !invert //true by default
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pull-stream.pull.values" id="apidoc.element.pull-stream.pull.values">
+        function <span class="apidocSignatureSpan">pull-stream.pull.</span>values
+        <span class="apidocSignatureSpan">(array, onAbort)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function values(array, onAbort) {
+  if(!array)
+    return function (abort, cb) {
+      if(abort) return abortCb(cb, abort, onAbort)
+      return cb(true)
+    }
+  if(!Array.isArray(array))
+    array = Object.keys(array).map(function (k) {
+      return array[k]
+    })
+  var i = 0
+  return function (abort, cb) {
+    if(abort)
+      return abortCb(cb, abort, onAbort)
+    if(i &gt;= array.length)
+      cb(true)
+    else
+      cb(null, array[i++])
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Quick Example
+
+Stat some files:
+
+```js
+pull(
+  pull.<span class="apidocCodeKeywordSpan">values</span>(['file1', 'file2', 'file3']),
+  pull.asyncMap(fs.stat),
+  pull.collect(function (err, array) {
+    console.log(array)
+  })
+)
+```
+note that `pull(a, b, c)` is basically the same as `a.pipe(b).pipe(c)`.
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
